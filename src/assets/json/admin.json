@@ -1,0 +1,51 @@
+{
+    "operation": {
+        "header": [
+            {
+                "path": "/",
+                "name": "首页介绍",
+                "icon": "el-icon-s-home"
+            },
+            {
+                "path": "/user",
+                "name": "用户管理",
+                "icon": "el-icon-user-solid"
+            },
+            {
+                "path": "/priority",
+                "name": "优先级管理",
+                "icon": "el-icon-s-tools"
+            }
+        ],
+        "router": [
+            {
+                "path": "/",
+                "redirect": "/summary",
+                "name": "首页",
+                "hidden": false,
+                "children": [
+                  {"path": "/summary", "name": "首页信息", "icon": "el-icon-s-home"}
+                ] 
+            },
+            {
+                "path": "/user",
+                "redirect": "/user",
+                "name": "用户",
+                "hidden": false,
+                "children": [
+                  {"path": "/user", "name": "用户信息", "icon": "el-icon-user-solid"},
+                  {"path": "/user2", "name": "用户信息2", "icon": "el-icon-user-solid"}
+                ] 
+            },
+            {
+                "path": "/priority",
+                "redirect": "/priority",
+                "name": "优先级",
+                "hidden": false,
+                "children": [
+                  {"path": "/priority", "name": "优先级配置信息", "icon": "el-icon-s-tools"}
+                ] 
+            }
+        ]
+    }
+}

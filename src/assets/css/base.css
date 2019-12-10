@@ -293,3 +293,7 @@ img {
 	height: 50px !important;
 	line-height: 50px !important;
 }
+/* 侧边栏折叠宽度 */
+.el-menu--collapse {
+	/* width: 50px !important; */
+}

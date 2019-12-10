@@ -13,10 +13,25 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return{
+
+    }
+  },
+  methods:{
+
+  },
+  created(){
+    console.log("router",window.location.pathname); 
+    this.$router.push(window.location.pathname)
+  },
+  mounted(){
+
+  }
 }
 </script>
-<style lang="css" scoped>
+<style lang="css">
 #app {
   height: 100%;
 }

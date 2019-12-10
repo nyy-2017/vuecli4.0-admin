@@ -2,30 +2,35 @@
   <section class="layout-container">
     <admin-header></admin-header>
     <section class="layout-container">
-      <el-aside class="aside">
+      <div class="aside">
         <nav-menu></nav-menu>
-      </el-aside>
-      <div class="main-container">
+      </div>
+      <div class="main-container" :style="{marginLeft: isCollapse? '50px' : '200px'}">
         <div class="title-title">
           <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item to="/home">首页</el-breadcrumb-item>
+            <el-breadcrumb-item to="/">首页</el-breadcrumb-item>
             <el-breadcrumb-item
               v-for="item in levelList"
               :key="item.path"
-              class="el-breadcrumb__inner">
+              class="el-breadcrumb__inner"
+            >
               <router-link
                 v-if="item.meta.parentPath"
                 :to="item.meta.parentPath"
-                class="set-hover-color">
+                class="set-hover-color"
+              >
                 {{item.meta.parentTitle}}
-                <i class="el-icon-arrow-right" style="margin: 0 6px;color: #C0C4CC;"></i>
+                <i
+                  class="el-icon-arrow-right"
+                  style="margin: 0 6px;color: #C0C4CC;"
+                ></i>
               </router-link>
               <router-link else :to="item.path">{{item.meta.title}}</router-link>
             </el-breadcrumb-item>
           </el-breadcrumb>
         </div>
         <div class="main">
-          <transition  name="slide-fade">
+          <transition name="slide-fade">
             <router-view></router-view>
           </transition>
         </div>
@@ -41,7 +46,8 @@ export default {
   name: "home",
   data() {
     return {
-      levelList: null //路由列表
+      levelList: null, //路由列表
+      isCollapse: false
     };
   },
   created() {
@@ -54,6 +60,10 @@ export default {
   },
   mounted() {
     this.getBreadcrumb();
+    this.bus.$on("showAside", content => {
+      // console.log("content22",content);
+      this.isCollapse = content;
+    });
   },
   methods: {
     /**
@@ -81,17 +91,19 @@ export default {
   height: 100%;
 }
 .aside {
-  width: 200px !important;
+  // width: 200px !important;
   position: fixed;
   top: 60px;
   height: 100%;
   z-index: 99;
+  overflow: hidden;
 }
 .main-container {
   padding-top: 60px;
   margin-left: 200px;
-  min-width: 1300px;
+  // min-width: 1300px;
   height: 100%;
+  transition: all 0.5s ease;
 }
 .title-title {
   width: 100%;
@@ -103,8 +115,8 @@ export default {
   margin-bottom: 1.5rem;
   z-index: 12;
 }
-.el-breadcrumb{
-  line-height: 1.5 !important
+.el-breadcrumb {
+  line-height: 1.5 !important;
 }
 .set-hover-color {
   font-weight: 700 !important;
@@ -113,7 +125,7 @@ export default {
     color: #409eff !important;
   }
 }
-.main{
+.main {
   padding: 0 30px;
 }
 .slide-fade-enter-active {

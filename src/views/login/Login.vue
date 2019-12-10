@@ -244,7 +244,7 @@ export default {
         message: "登录成功"
       });
       //跳转到首页
-      this.$router.push("/home");
+      this.$router.push("/");
       return false;
 
       //验证账号密码
