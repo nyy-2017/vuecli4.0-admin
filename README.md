@@ -1,5 +1,9 @@
 # vue2-admin-template
-
+版本最终效果是这样的：
+登录部分：
+<image src="./src/assets/images/admin-login.png"/>
+首页部分：
+<image src="./src/assets/images/admin001.png"/>
 ## Project setup
 ```
 npm install
