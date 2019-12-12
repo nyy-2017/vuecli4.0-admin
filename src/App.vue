@@ -23,7 +23,7 @@ export default {
 
   },
   created(){
-    console.log("router",window.location.pathname); 
+    console.log("router",window.location.pathname,this.$route.meta.keepAlive); 
     this.$router.push(window.location.pathname)
   },
   mounted(){
